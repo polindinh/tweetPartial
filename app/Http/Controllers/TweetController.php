@@ -1,38 +1,26 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 
 class TweetController extends Controller
 {
-    private $tweets = [
-        [
-        'author' => 'Paul',
-        'content' => 'This is my first tweet'
-        ],
-        [
-        'author' => 'Oz',
-        'content' => 'This is my second tweet'
-        ],
-        [
-        'author' => 'Alex',
-        'content' => 'This is my third tweet'
-        ],
-        [
-        'author' => 'John',
-        'content' => 'This is my fourth tweet'
-        ]
-
-    ];
-
-    function show(){
-        return view('showTweets', ['allTweets' => $this -> tweets]);
+    public function showTweets(){
+        $tweets = DB::select('select * from tweet');
+        return view('showTweets', ['tweets' => $tweets]);
     }
-    function showTweet($id){
-        if($id > sizeOf($this->tweets)){
-            return view("tweetError");
-        }
-        return view('showTweets', ['allTweets' =>[$this-> tweets[$id]]]);
+
+    public function addTweet(Request $request){
+        DB::insert("INSERT INTO tweet (author,content) VALUES ('$request->author', '$request->content');");
+        $tweets = DB::select('select * from tweet');
+        return view('showTweets', ['tweets' => $tweets]);
     }
+    public function deleteTweet(Request $request){
+        DB::delete("DELETE FROM tweet WHERE id = '$request->id'");
+        $tweets = DB::select('select * from tweet');
+        return view('showTweets', ['tweets' => $tweets]);
+    }
+
 }
