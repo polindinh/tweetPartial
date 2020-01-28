@@ -5,6 +5,7 @@ Tweet
 @endsection
 @include('header')
 
+
 @section ('content')
 
 <div class = "content">

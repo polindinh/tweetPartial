@@ -12,7 +12,6 @@
     @csrf
     <input type="text" name="author" value="author">
     <input type="text" name="content" value="content">
-    {{-- <input type="hidden" name ="id" value="{{$tweet->id}}"> --}}
     <button type="submit" name="id" value ="{{$tweet->id}}">Update</button>
 </form>
 @endsection
