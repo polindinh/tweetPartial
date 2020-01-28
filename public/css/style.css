@@ -1,0 +1,30 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+.button{
+ display: inline-block;
+
+}
+
+
+
+.btn{
+    margin:10px;
+    padding:3px 7px;
+    background-color: #1DA1F2;
+    color: white;
+    border-radius: 5px;
+}
+
+.newpost{
+    margin:20px 0;
+}
+
+p{
+
+}
+
+
+
